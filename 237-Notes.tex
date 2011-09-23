@@ -1,0 +1,90 @@
+\documentclass[10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Package Inclusion %
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry,amsmath,amsthm,mathrsfs,amssymb,graphicx,bm,hyperref,url}
+
+%%%%%%%%%%%%%%%%%%%
+% Custom Commands %
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\n}{\noindent}
+\newcommand{\norm}[1]{\left|#1\right|}
+\newcommand{\avg}[1]{\left<#1\right>}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page Information %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Notes for PHYS 237: Galactic Dynamics}
+\author{Bill Wolf}
+\date{\today}
+
+\begin{document}
+
+\vfill\maketitle\vfill \newpage
+
+\tableofcontents \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%
+% September 23, 2011 %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+	\emph{September 23, 2011}\\
+	
+	\n The only equation we need is 
+	\begin{equation} \label{newton1} \frac{d^2\mathbf{x}}{dt^2}=\sum_{j\neq i}^N Gm_j\frac{\mathbf{x}_j-\mathbf{x}_i}{\norm{\mathbf{x}_j-\mathbf{x}_i}^3}\end{equation}
+	which describes the dynamics of a many-particle system.
+	\subsection{Analogues}
+	Many fields are very similar to the study of galactic dynamics. Early astronomers used these tools to study \textbf{celestial mechanics}, using the theory of gravity to predict the motions of the stars and planets. Additionally, \textbf{statistical mechanics} has close ties with galactic dynamics since in both regimes, we consider the collective behavior of many particles. However, in statistical mechanics, the study is often dominated by short-range forces, whereas in galactic dynamics, short-range forces are (roughly) just as important as long-range forces. Finally, one may draw from the study of \textbf{plasma physics}, which shares the use of a $1/r^2$ law, though it is complicated by the use of positive and negative charges, ushering in the machinery of Maxwell's equations.
+	%%%%%
+	\subsection{Distribution Functions}
+	Quite often, we start with a distribution function that describes how particles are situated in phase space. That is, we describe an ensemble of orbits. In such a distribution function, particles are specified uniquely by position $\mathbf{x}$ and velocity $\mathbf{v}$. We define a \textbf{distribution function} $f(\mathbf{x},\mathbf{v},t)$ as
+	\begin{center}
+		$f(\mathbf{x},\mathbf{v},t)\,d^3x\,d^3v \equiv$ probability that a particle lies in $\mathbf{x}+d\mathbf{x},\ \mathbf{v}+d\mathbf{v}$
+	\end{center}
+	Since it's a probability distribution, it must be normalized:
+	\begin{equation}\int d^3x\,d^3v\,f(\mathbf{x},\mathbf{v},t)=1\label{normalization1}\end{equation}
+	For most systems, this distribution function can only be solved accurately by a computer. Approximations are useful, though, for developing analytic insights into the dynamics of a system.
+	%%%%%
+	\subsection{Collisions}
+	In galactic dynamics, we don't mean that particles necessarily ''collide''. Instead we mean particles come into close causal contact.\\
+	
+	\n Many physical processes have various degrees to which they are ``collisional''. Fluids, for example, are highly collisional, meaning that the mean free path of any given particle is much smaller than all other relevant length scales. Such a system is described well by Maxwell-Boltzmann statistics (in the non-relativistic, non-degenerate limit). Such an approach does not work for self-gravitating system. Collisional systems are lumpy systems where two-body encounters are important.\\
+	
+	\n Open star clusters ($N_{\mathrm{stars}}\sim 100$) and planetary systems are good examples of collisional systems. Typically they are few particle systems (contradictory to the fluid dynamics example).\\
+	
+	\n The other limit is the collisionless systems, or smooth systems. In such a case, there are many particles, so that their ``delta functions'' can be approximated as a smooth distribution (i.e. individual particles less important, large scale structure more important). Here, the underlying gravitational potential can be treated as smooth, and we can use analytic theory to gain insights. Galaxies lie in this regime. For instance, the Milky Way has on the order of $10^11$ stars.\\
+	
+	\n In the intermediate regime lie things like globular clusters ($N_{\mathrm{stars}}\sim 10^3-10^5$)
+	
+	\subsection{The Virial Theorem}
+	The Virial Theorem comes up in many contexts, including astrophysics and statistical mechanics. The exact statement of the theorem (for our use) is 
+	\begin{equation} \label {virial1} 2\avg{T} + \avg{V} = 0\end{equation}
+	where $T$ and $V$ are the kinetic and potential energies of a system, respectively. One might notice that it's important that $T<-V$ in order that a system might be bound. This theorem is extremely useful (assuming a system has come to virial equilibrium). For instance, the velocities in a galaxy can be determined via doppler broadening of the spectra. From this, we find the kinetic energy, which then gives us a potential energy via \eqref{virial1}, giving us the mass!\\
+	
+	\n\begin{proof}
+		The potential for a gravitationally-bound system is
+		$$V=-\frac{1}{2}\sum_{i\neq j}\frac{Gm_im_j}{\norm{\mathbf{x}_{ij}}}$$
+		To order of magnitude, 
+		$$V \sim \frac{GM^2}{r_h}$$
+		where $r_h$ is some characteristic size. The kinetic energy is
+		$$T = \frac{1}{2}\sum_j m_j\norm{\dot{\mathbf{x}}_j}^2$$
+		Consider a system of point particles with positions $\mathbf{r}_i$ and momenta $\mathbf{p}_i$. Consider the quantity
+		$$G=\sum_{i}\mathbf{p}_i\cdot\mathbf{x}_i$$
+		Differentiating with respect to time gives
+		$$\dot{G} = \sum_i \dot{\mathbf{r}}_i\cdot \mathbf{p}_i+\sum_i\dot{\mathbf{p}}_i\cdot\mathbf{r}_i=\sum_i\mathbf{p}_i\cdot\frac{\mathbf{p}_i}{m}+\sum_i\mathbf{F}_i\cdot\mathbf{r}_i = 2T+\sum_i\mathbf{F}_i\cdot\mathbf{r}_i$$
+		This quantity is called the virial (no clue why). If we take a time average,
+		$$\avg{\dot{G}} = \frac{1}{\tau}\int_0^\tau\frac{dG}{dt'}\,dt' = \frac{1}{\tau}\left[G(\tau)-G(0)\right]\to 0\ \textrm{as}\ \tau\to \infty$$
+		Consider $\sum_i\mathbf{F}_i\cdot\mathbf{r}_i$ for gravitational force
+		$$\mathbf{F}_i = \sum_{j\neq i}\frac{Gm_im_j}{\norm{\mathbf{r}_{ij}}^2}$$
+		So we have
+		$$\sum_i \mathbf{F}_i\cdot\mathbf{r}_i=\sum_{i,j}\frac{Gm_im_j\mathbf{R}_j\cdot(\mathbf{r}_j-\mathbf{r}_i)}{\norm{\mathbf{r}_j-\mathbf{r}_i}^3}$$
+		
+	\end{proof}
+	
+	
+	
+	
+\end{document}
