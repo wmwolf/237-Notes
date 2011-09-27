@@ -3,3 +3,10 @@
 \contentsline {subsection}{\numberline {1.2}Distribution Functions}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Collisions}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}The Virial Theorem}{4}{subsection.1.4}
+\contentsline {section}{\numberline {2}Potential Theory}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Spherical Potentials}{5}{subsection.2.1}
+\contentsline {paragraph}{Interior Shell:}{6}{section*.2}
+\contentsline {paragraph}{Exterior Shell:}{6}{section*.3}
+\contentsline {subsubsection}{\numberline {2.1.1}Measurements}{6}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Examples of Spherically Symmetric Potentials}{6}{subsubsection.2.1.2}
+\contentsline {paragraph}{Singular Isothermal Sphere}{7}{section*.4}

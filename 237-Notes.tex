@@ -80,9 +80,72 @@
 		Consider $\sum_i\mathbf{F}_i\cdot\mathbf{r}_i$ for gravitational force
 		$$\mathbf{F}_i = \sum_{j\neq i}\frac{Gm_im_j}{\norm{\mathbf{r}_{ij}}^2}$$
 		So we have
-		$$\sum_i \mathbf{F}_i\cdot\mathbf{r}_i=\sum_{i,j}\frac{Gm_im_j\mathbf{R}_j\cdot(\mathbf{r}_j-\mathbf{r}_i)}{\norm{\mathbf{r}_j-\mathbf{r}_i}^3}$$
-		
+		$$\sum_i \mathbf{F}_i\cdot\mathbf{r}_i=\sum_{i,j}\frac{Gm_im_j\mathbf{R}_j\cdot(\mathbf{r}_j-\mathbf{r}_i)}{\norm{\mathbf{r}_j-\mathbf{r}_i}^3}$$		
 	\end{proof}
+	
+	\n\emph{September 26, 2011}
+	\section{Potential Theory}
+	In this class, we will only consider spherical and disk potentials since most self-gravitating objects tend to be spherical due to the radial nature of the gravitational force, but conservation of angular momentum can cause disk-like structure.
+	For a distribution of point particles (collisionless limit), we will approximate the density has a smooth function. We will solve for the potential in two different ways. First, via Poisson's equation:
+	\begin{equation}\label{poisson} \nabla^2\Phi = 4\pi G\rho\end{equation}
+	and also via Gauss' Law:
+	\begin{equation}\label{gauss1} \Phi(\mathbf{x})=-G\int\frac{\rho(\mathbf{x}')}{\norm{\mathbf{x}-\mathbf{x}'}}d^3x'\end{equation}
+	or its more useful form
+	\begin{equation} \label{gauss2} \int (\nabla\Phi)\cdot d\mathbf{S}=4\pi G M_{\mathrm{enc}}\end{equation}
+	\subsection{Spherical Potentials}
+	For a spherical shell of mass, the potential measured outside of the shell is the same as that of a point particle in the center:
+	\begin{equation}\label{shellpot1} \Phi_{\mathrm{ext}}(r) = -\frac{GM_{\mathrm{shell}}}{r}\end{equation}
+	Alternatively,
+	\begin{align}
+		\int (\nabla\cdot\Phi)d\S = 4\pi r^2 F &= 4\pi G M_{\mathrm{encl}}\nonumber\\
+		&\Rightarrow F=-\frac{GM_{\mathrm{encl}}}{r^2}\label{shellpot2}
+	\end{align}
+	For a spherical distribution of mass, we may again use Gauss' law. However, when just considering an interior shell, the exterior shells are still important since they add on a constant potential
+	\paragraph{Interior Shell:} $r'<r$
+	$$\delta \Phi = -\frac{GM_{\mathrm{shell}}}{r}=-\frac{G\rho(r')4\pi{r'}^2dr'}{r}$$
+	\paragraph{Exterior Shell:} $\delta \Phi$ is constant. Let us choose $\delta\Phi$ so that it is continuous
+	$$\delta\Phi = -\frac{GM_{\mathrm{shell}}}{r'}=-\frac{G\rho(r') 4\pi {r'}^2dr'}{r'}$$
+	Then the overall potential is
+	\begin{equation} \label{potential1} \Phi(r)=\int_{\mathrm{int}}+\int_{\mathrm{ext}} = -G\left[\frac{1}{r}\int 4\pi{r'}^2 \rho(r')\,dr'+\int _r^\infty 4\pi \rho(r')r'\,dr'\right]\end{equation}
+	\subsubsection{Measurements}
+	We can't actually measure the density profile of most astrophysical objects, but we \emph{can} measure velocities via the Doppler Effect. We get the \textbf{circular velocity} and deduce a gravitational force:
+	\begin{equation}\label{circular}F=\frac{mv_c^2}{r}=\frac{GMm}{r^2}\Rightarrow v_c^2=\frac{GM(r)}{r}\end{equation}
+	which gives us a direct measurement of the mass profile.\\
+	
+	\n The \textbf{escape velocity} is also an important concept. Essentially, it is the velocity a particle must have to escape to $r\to\infty$. That is,
+	\begin{equation}\label{escape1} \frac{1}{2}mv_{\mathrm{esc}}^2-\frac{GMm}{r}=0\Rightarrow v_{\mathrm{esc}}^2=\frac{2GM}{r}={2v_{c}}^2\end{equation}
+	\subsubsection{Examples of Spherically Symmetric Potentials}
+	\textbf{Homogeneous Sphere} In this scenario, the density is constant ($\rho(r)=\mathrm{const}$). The gravitational force is given by
+	\begin{equation}\label{homogeneous1} f=-\frac{GM}{r^2}=-\frac{G(4/3 \pi\rho r^3)}{r^2}\end{equation}
+	which yields the ODE
+	\begin{equation}\label{homogeneous2} \ddot{r}=-\left(\frac{4G\pi \rho}{3}\right)r\end{equation}
+	with obvious harmonic solution. Thus, the period of \emph{every} orbit is 
+	\begin{equation}\label{homogeneous3} P=\frac{2\pi}{\omega}=2\pi\sqrt{\frac{3}{4\pi G\rho}}\propto \frac{1}{\sqrt{G\rho}}\end{equation}
+	Note that we have shown the dynamical time scale for the systems gravitational evolution, $\tau=1/\sqrt{G\rho}$.\\
+	
+	\n Now we shift our attention to the potential of a homogeneous sphere with radius $b$. For $r>b$, then we have the obvious
+	$$\Phi(r)=-\frac{GM}{r}$$
+	For $r<b$, we have to specify the constant potential to ensure continuity. Noting that $M_{\mathrm{tot}} = 4/3 \pi\rho b^3$,
+	\begin{align*}
+	\Phi_<&=-G\left[\frac{1}{r}\frac{4}{3}\pi\rho r^3 + \int_r^b 4\pi g r'\,dr'\right]\\
+	      &=-\frac{G}{r} M_{\mathrm{tot}}\left(\frac{r^3}{b^3}\right)+2\pi G(b^2-r^2)\\
+	      &=-\frac{GM_{\mathrm{tot}}}{b}\left[\frac{r^2}{b^2}+\frac{3}{2}\left(1-\frac{r^2}{b^2}\right)\right]\\
+	      &=-\frac{GM_{\mathrm{tot}}}{b}\left[\frac{3}{2}-\frac{r^2}{2b^2}\right]
+	\end{align*}
+	\paragraph{Singular Isothermal Sphere} The singular isothermal sphere  is one whose rotation curve increases in a Keplarian fashion up to a certain point and then becomes constant with increasing $r$. That is, after a certain point, the rotational velocity becomes independent with radius. Evidence of this is one of the top indicators for the presence of dark matter. The word ``isothermal'' is present since physicists often relate the temperature with the velocity of particles (not a good name). The word ``singular'' is present since the density is seen to diverge at the center.\\
+	
+	\n As it turns out, computational simulations for dark matter halos find $\rho\propto r^{-1}$ for $r\to 0$ and $\rho\propto r^{-3}$ as $r\to \infty$.\\
+	
+	\n We wish to know how to extract the mass profile for this velocity distribution. Turns out that
+	$$M(r)\propto \int \rho r^2\,dr\propto r$$
+	which is bad, since the density diverges towards the center. Often, we truncate the density at a certain ``Virial radius''. Then the mass is set to vary as
+	$$M=M_0\left(\frac{r}{r_0}\right)$$
+	In the outer regime,
+	$$v_c^2=\frac{GM}{r}=\mathrm{const}$$
+	We're really interested in the potential between shells:
+	\begin{equation}\label{singular1} \Phi(r)-\Phi(r_0)=G\int_{r_0}^{r}dr'\,\frac{GM(r')}{{r'}^2} = \frac{GM_0}{r_0}\ln\left(\frac{r}{r_0}\right)=v_c^2\ln\left(\frac{r}{r_0}\right)\end{equation}
+	
+	
 	
 	
 	
